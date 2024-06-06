@@ -1,1 +1,2 @@
 # 372-project
+Bu repo TOBB ETÜ okulunun BİL372 dersinin projesi için açılmıştır. Adı Dijital Yemek Tarifleri Kitabı olan bu proje, kullanıcıların ellerinde bulunan malzemeler, yemek yapma beceri seviyeleri, yemek türü tercihi ve yemek yapma sürelerine göre onlara en uygun yemek tariflerini öneren bir uygulamadır. Bu uygulama, yemek yapma sürecini kolaylaştırmayı, kullanıcıların yeni tarifler keşfetmesini sağlamayı ve yemek hazırlama sürecini daha eğlenceli hale getirmeyi amaçlar.
