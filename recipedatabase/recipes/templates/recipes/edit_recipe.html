@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Tarifi Düzenle</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Kaydet</button>
+</form>
+<a href="{% url 'recipe_detail' recipe.id %}">Tarif Detayına Dön</a>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        function updateTotalTime() {
+            var prepTime = document.getElementById("id_prep_time").value;
+            var cookTime = document.getElementById("id_cook_time").value;
+            var totalTimeField = document.getElementById("id_total_time");
+            totalTimeField.value = parseInt(prepTime) + parseInt(cookTime);
+        }
+
+        var prepTimeField = document.getElementById("id_prep_time");
+        var cookTimeField = document.getElementById("id_cook_time");
+
+        prepTimeField.addEventListener("input", updateTotalTime);
+        cookTimeField.addEventListener("input", updateTotalTime);
+    });
+</script>
+{% endblock %}

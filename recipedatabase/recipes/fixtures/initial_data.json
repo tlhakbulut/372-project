@@ -1,0 +1,59 @@
+[
+    {
+        "model": "recipes.recipe",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "name": "Spaghetti Carbonara",
+            "prep_time": 10,
+            "cook_time": 20,
+            "total_time": 30,
+            "servings": 4,
+            "ingredients": "Spaghetti, yumurta, parmesan peyniri, pancetta, sarımsak, tuz, karabiber",
+            "directions": "1. Spaghettiyi haşlayın. 2. Pancetta'yı doğrayın ve kızartın. 3. Yumurtaları çırpın ve peynir ekleyin. 4. Makarnayı pancetta ile karıştırın ve yumurta karışımını ekleyin.",
+            "rating": 4.5,
+            "url": "www.example.com/spaghetti-carbonara",
+            "cuisine_path": "İtalyan",
+            "nutrition": {"kalori": 400, "protein": "20g", "yağ": "15g"},
+            "timing": {"hazırlık": 10, "pişirme": 20}
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 2,
+        "fields": {
+            "user": 1,
+            "name": "Chicken Alfredo",
+            "prep_time": 15,
+            "cook_time": 25,
+            "total_time": 40,
+            "servings": 4,
+            "ingredients": "Fettuccine, tavuk, krema, parmesan peyniri, sarımsak, tuz, karabiber",
+            "directions": "1. Fettuccine'yi haşlayın. 2. Tavukları doğrayın ve kızartın. 3. Kremayı ekleyin ve karıştırın. 4. Tavuklu karışımı makarnaya ekleyin.",
+            "rating": 4.7,
+            "url": "www.example.com/chicken-alfredo",
+            "cuisine_path": "İtalyan",
+            "nutrition": {"kalori": 450, "protein": "25g", "yağ": "20g"},
+            "timing": {"hazırlık": 15, "pişirme": 25}
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 3,
+        "fields": {
+            "user": 1,
+            "name": "Beef Stroganoff",
+            "prep_time": 20,
+            "cook_time": 30,
+            "total_time": 50,
+            "servings": 4,
+            "ingredients": "Sığır eti, mantar, soğan, ekşi krema, tuz, karabiber",
+            "directions": "1. Eti doğrayın ve kızartın. 2. Mantar ve soğanı ekleyin ve pişirin. 3. Ekşi kremayı ekleyin ve karıştırın.",
+            "rating": 4.6,
+            "url": "www.example.com/beef-stroganoff",
+            "cuisine_path": "Rus",
+            "nutrition": {"kalori": 500, "protein": "30g", "yağ": "25g"},
+            "timing": {"hazırlık": 20, "pişirme": 30}
+        }
+    }
+]
