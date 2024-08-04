@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ recipe.name }}</h2>
+<p>Hazırlama süresi: {{ recipe.prep_time }} dakika</p>
+<p>Pişirme süresi: {{ recipe.cook_time }} dakika</p>
+<p>Toplam süre: {{ recipe.total_time }} dakika</p>
+<p>Porsiyon sayısı: {{ recipe.servings }}</p>
+<p>Malzemeler: {{ recipe.ingredients }}</p>
+<p>Yapım adımları: {{ recipe.directions }}</p>
+<p>Puan: {{ recipe.rating }}</p>
+<p>URL: <a href="{{ recipe.url }}">{{ recipe.url }}</a></p>
+<p>Mutfak türü: {{ recipe.cuisine_path }}</p>
+
+<h3>Besin Bilgileri</h3>
+<button id="toggleNutrition">Besin Bilgilerini Göster</button>
+<div id="nutritionInfo" style="display: none;">
+    <p>Kalori: {{ recipe.calories }}</p>
+    <p>Protein: {{ recipe.protein }}</p>
+    <p>Yağ: {{ recipe.fat }}</p>
+</div>
+
+{% if user.is_authenticated %}
+    <a href="{% url 'add_favorite' recipe.id %}">Favorilere Ekle</a>
+    <a href="{% url 'edit_recipe' recipe.id %}">Düzenle</a>
+    <a href="{% url 'delete_recipe' recipe.id %}">Sil</a>
+
+    <h3>Bu Tarifi Puanla</h3>
+    <form method="post" action="{% url 'rate_recipe' recipe.id %}">
+        {% csrf_token %}
+        <label for="rating">Puan:</label>
+        <select name="rating" id="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <button type="submit">Puanla</button>
+    </form>
+{% endif %}
+
+<script>
+    document.getElementById("toggleNutrition").onclick = function() {
+        var nutritionInfo = document.getElementById("nutritionInfo");
+        if (nutritionInfo.style.display === "none") {
+            nutritionInfo.style.display = "block";
+            this.textContent = "Besin Bilgilerini Gizle";
+        } else {
+            nutritionInfo.style.display = "none";
+            this.textContent = "Besin Bilgilerini Göster";
+        }
+    };
+</script>
+
+{% endblock %}

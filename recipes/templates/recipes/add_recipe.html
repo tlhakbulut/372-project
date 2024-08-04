@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Yeni Tarif Ekle</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Kaydet</button>
+</form>
+<a href="{% url 'user_profile' %}">Profil sayfasına dön</a>
+{% endblock %}
