@@ -13,4 +13,5 @@ urlpatterns = [
     path('delete_recipe/<int:recipe_id>/', views.delete_recipe, name='delete_recipe'),
     path('add_favorite/<int:recipe_id>/', views.add_favorite, name='add_favorite'),
     path('rate_recipe/<int:recipe_id>/', views.rate_recipe, name='rate_recipe'),
+    path('recipes/filter/', views.recipe_filter, name='recipe_filter'),
 ]
