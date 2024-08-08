@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from .forms import RecipeForm
+from .forms import RecipeForm, RecipeFilterForm
 from .models import Recipe, FavoriteRecipe
 
 @login_required
@@ -85,3 +85,41 @@ def rate_recipe(request, recipe_id):
             recipe.rating = (recipe.rating + rating) / 2  # Ortalama puanı güncelleme
             recipe.save()
     return redirect('recipe_detail', recipe_id=recipe_id)
+
+def recipe_filter(request):
+    recipes = Recipe.objects.all()
+    filter_form = RecipeFilterForm(request.GET)
+    
+    if filter_form.is_valid():
+        
+        min_prep_time = filter_form.cleaned_data.get('min_prep_time')
+        max_prep_time = filter_form.cleaned_data.get('max_prep_time')
+        min_total_time = filter_form.cleaned_data.get('min_total_time')
+        max_total_time = filter_form.cleaned_data.get('max_total_time')
+        ingredients = filter_form.cleaned_data.get('ingredients')
+        min_rating = filter_form.cleaned_data.get('min_rating')
+        max_rating = filter_form.cleaned_data.get('max_rating')
+        
+        
+        if min_prep_time is not None:
+            recipes = recipes.filter(prep_time__gte=min_prep_time)
+        if max_prep_time is not None:
+            recipes = recipes.filter(prep_time__lte=max_prep_time)
+        if min_total_time is not None:
+            recipes = recipes.filter(total_time__gte=min_total_time)
+        if max_total_time is not None:
+            recipes = recipes.filter(total_time__lte=max_total_time)
+        if ingredients:
+            recipes = recipes.filter(ingredients__icontains=ingredients)
+        if min_rating is not None:
+            recipes = recipes.filter(rating__gte=min_rating)
+        if max_rating is not None:
+            recipes = recipes.filter(rating__lte=max_rating)
+    
+    context = {
+        'recipes': recipes,
+        'filter_form': filter_form,
+    }
+    return render(request, 'recipes/recipe_list.html', context)
+
+
