@@ -2,6 +2,10 @@
 
 {% block content %}
 <h1>Recipes</h1>
+<form method="get" action="{% url 'recipe_filter' %}">
+    {{ filter_form.as_p }}
+    <button type="submit">Filter</button>
+</form>
 <form method="get">
     <input type="text" name="q" placeholder="Search recipes">
     <button type="submit">Ara</button>
