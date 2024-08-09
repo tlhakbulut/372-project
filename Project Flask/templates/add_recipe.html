@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Add Recipe{% endblock %}
+{% block content %}
+    <h1>Add New Recipe</h1>
+    <form method="post">
+        <div class="mb-3">
+            <label for="recipe_name" class="form-label">Recipe Name</label>
+            <input type="text" class="form-control" id="recipe_name" name="recipe_name" required>
+        </div>
+        <div class="mb-3">
+            <label for="servings" class="form-label">Servings</label>
+            <input type="number" class="form-control" id="servings" name="servings" required>
+        </div>
+        <div class="mb-3">
+            <label for="rating" class="form-label">Rating</label>
+            <input type="number" class="form-control" id="rating" name="rating" step="0.1" min="0" max="5" required>
+        </div>
+        <div class="mb-3">
+            <label for="url" class="form-label">URL</label>
+            <input type="url" class="form-control" id="url" name="url">
+        </div>
+        <div class="mb-3">
+            <label for="ingredients" class="form-label">Ingredients (one per line)</label>
+            <textarea class="form-control" id="ingredients" name="ingredients" rows="5" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="directions" class="form-label">Directions (one per line)</label>
+            <textarea class="form-control" id="directions" name="directions" rows="5" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="calories" class="form-label">Calories</label>
+            <input type="number" class="form-control" id="calories" name="calories" required>
+        </div>
+        <div class="mb-3">
+            <label for="protein" class="form-label">Protein (g)</label>
+            <input type="number" class="form-control" id="protein" name="protein" step="0.1" required>
+        </div>
+        <div class="mb-3">
+            <label for="fat" class="form-label">Fat (g)</label>
+            <input type="number" class="form-control" id="fat" name="fat" step="0.1" required>
+        </div>
+        <div class="mb-3">
+            <label for="prep_time" class="form-label">Prep Time (minutes)</label>
+            <input type="number" class="form-control" id="prep_time" name="prep_time" required>
+        </div>
+        <div class="mb-3">
+            <label for="cook_time" class="form-label">Cook Time (minutes)</label>
+            <input type="number" class="form-control" id="cook_time" name="cook_time" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Recipe</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+    <style>
+        .gizli {
+            display: none;
+        }
+    </style>
+    <h1>Welcome to Recipe Manager</h1>
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="switch">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Search ingredients</label>
+      </div>
+    <form id="search" action="{{ url_for('search') }}" method="get" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="query" class="form-control" placeholder="Search for recipes...">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+    <form id="search_ingredients" action="{{ url_for('search_ingredient') }}" method="get" class="mb-4 gizli">
+        <div class="input-group">
+            <input type="text" name="query" class="form-control" placeholder="Search for ingredients...">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+    <a href="{{ url_for('add_recipe') }}" class="btn btn-success">Add New Recipe</a>
+    <script>
+        var btn=document.getElementById('switch');
+        var form1=document.getElementById('search_ingredients');
+        var form2=document.getElementById('search');
+        btn.onclick=function(){
+            if(form1.classList.contains('gizli'))
+            {
+                form1.classList.remove('gizli');
+                form2.classList.add('gizli');
+            }
+            else
+            {
+                form1.classList.add('gizli');
+                form2.classList.remove('gizli');
+            }
+        }
+    </script>
+{% endblock %}
